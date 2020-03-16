@@ -1,0 +1,23 @@
+{
+  "name": "scale-grid",
+  "version": "0.1.0",
+  "description": "Smart CSS grid for arraging HTML elements of different sizes with a known min and max width.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebDocUI/grid.git"
+  },
+  "keywords": [
+    "css",
+    "grid"
+  ],
+  "author": "wassfila",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WebDocUI/grid/issues"
+  },
+  "homepage": "https://github.com/WebDocUI/grid#readme"
+}
