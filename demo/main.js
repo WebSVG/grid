@@ -94,7 +94,7 @@ function onWheel(e){
 function main(){
     let main_div = main_div_comp(document.body,sheet);
     
-    for(let i=0;i<10;i++){
+    for(let i=0;i<20;i++){
         div_comp(main_div,sheet);
     }
 

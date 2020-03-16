@@ -1,5 +1,5 @@
 # grid
-grid helper library for usage with multiple HTML elements
+Smart CSS grid for arraging HTML elements of different sizes with a known min and max width. Scaling elements on mouse wheel also scales the grid to Keep the expected responsiveness.
 
 # Live Demo
 https://webdocui.github.io/grid/
