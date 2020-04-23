@@ -1,10 +1,4 @@
-import {scale_grid,scale_grid_div} from "../src/index.js"
-
-//https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
-
-function div(width,height,g,b){
-    return /*html*/`<div style="width:${width}px;height:${height}px;border:thick solid #0000FF" />`
-}
+import {Grid} from "../src/index.js"
 
 function get_custom_div_props(){
     return {
@@ -16,18 +10,15 @@ function get_custom_div_props(){
     }
 }
 
-function main(){
-    const sheet = new CSSStyleSheet();
 
-    let main_div = scale_grid(document.body,sheet,{grid_side:150,max_sides:2});
-    
+function main(){
+    let grid = new Grid(document.body,150,2)
     for(let i=0;i<20;i++){
-        const props = get_custom_div_props();
-        let div = scale_grid_div(main_div,sheet,props);
+        let div = grid.get_div(get_custom_div_props());
         console.log(`created comp : ${div.id}`);
     }
 
-    document.adoptedStyleSheets = [sheet];
+    grid.apply()
 }
 
 main();

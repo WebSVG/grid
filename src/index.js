@@ -1,33 +1,5 @@
 
-import {html,css,uid,suid} from "../src/utils.js"
-
-function scale_grid_div(parent,sheet,props){
-    const side_size = parent.getAttribute("data-side-min");
-    const max_nb_sides = parent.getAttribute("data-max-sides");
-    const width = props.width;
-    const height = props.height;
-    const id = `div_${suid()}`;
-    //TODO scale up and down to max width / height that keeps within a reasonable number of columns/rows
-    //TODO derive the number of columns/rows out of the width and height
-    const width_span = (width>side_size)?2:1;
-    const height_span = (height>side_size)?2:1;
-    css(sheet,/*css*/`
-    #${id} {
-        width:${width};
-        grid-column:span ${width_span};
-        grid-row:span ${height_span};
-        height:${height};
-        background: rgb(${props.r},${props.g},${props.b});
-        //align-self: center;
-        //justify-self: center;
-    }
-    `);
-    let c_comp = html(parent,/*html*/`
-        <div id=${id} class="child" data-width=${width} data-height=${height} />
-    `);
-    c_comp.addEventListener('wheel',onWheel);
-    return c_comp;
-}
+import {html,css,suid} from "../src/utils.js"
 
 function scale_grid(parent,sheet,props){
     const id = `div_${suid()}`;
@@ -53,6 +25,7 @@ function scale_grid(parent,sheet,props){
     comp.addEventListener('wheel',onWheel);
     return comp;
 }
+
 
 function onWheel(e){
     if(!e.shiftKey){
@@ -87,7 +60,47 @@ function onWheel(e){
     e.stopPropagation();
 }
 
-export{
-    scale_grid,
-    scale_grid_div
-};
+class Grid{
+    constructor(parent,grid_side,max_sides){
+        this.sheet = new CSSStyleSheet()
+        this.main_div = scale_grid(parent,this.sheet,{grid_side:grid_side,max_sides:max_sides});
+        console.log(JSON.stringify(this.main_div))
+    }
+
+    get_div(props){
+        let parent = this.main_div
+        const side_size = parent.getAttribute("data-side-min");
+        const max_nb_sides = parent.getAttribute("data-max-sides");
+        const width = props.width;
+        const height = props.height;
+        const id = `div_${suid()}`;
+        //TODO scale up and down to max width / height that keeps within a reasonable number of columns/rows
+        //TODO derive the number of columns/rows out of the width and height
+        const width_span = (width>side_size)?2:1;
+        const height_span = (height>side_size)?2:1;
+        css(this.sheet,/*css*/`
+        #${id} {
+            width:${width};
+            grid-column:span ${width_span};
+            grid-row:span ${height_span};
+            height:${height};
+            background: rgb(${props.r},${props.g},${props.b});
+            //align-self: center;
+            //justify-self: center;
+        }
+        `);
+        let c_comp = html(parent,/*html*/`
+            <div id=${id} class="child" data-width=${width} data-height=${height} />
+        `);
+        c_comp.addEventListener('wheel',onWheel);
+        return c_comp;
+    }
+
+    apply(){
+        document.adoptedStyleSheets = [this.sheet]
+    }
+    
+}
+
+
+export{Grid};
