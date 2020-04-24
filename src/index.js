@@ -97,7 +97,7 @@ class Grid{
     }
 
     apply(){
-        document.adoptedStyleSheets = [this.sheet]
+        document.adoptedStyleSheets = [...document.adoptedStyleSheets, this.sheet];
     }
     
 }
