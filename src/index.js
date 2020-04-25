@@ -1,5 +1,5 @@
 
-import {html,css,suid} from "../src/utils.js"
+import {html,css,suid} from "./web-js-utils-2.0.2.js"
 
 function scale_grid(parent,sheet,props){
     const id = `div_${suid()}`;
@@ -61,7 +61,13 @@ function onWheel(e){
 }
 
 class Grid{
-    constructor(parent,grid_side,max_sides){
+    /**
+     * 
+     * @param {*} parent : parent element
+     * @param {*} grid_side : slots unit to be used for the grid
+     * @param {*} max_sides : max number of slots that an element can take, still only 2 is supported
+     */
+    constructor(parent,grid_side,max_sides=2){
         this.sheet = new CSSStyleSheet()
         this.main_div = scale_grid(parent,this.sheet,{grid_side:grid_side,max_sides:max_sides});
         console.log(JSON.stringify(this.main_div))

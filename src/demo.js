@@ -1,4 +1,4 @@
-import {Grid} from "../src/index.js"
+import {Grid} from "./index.js"
 
 function get_custom_div_props(){
     return {
@@ -12,7 +12,7 @@ function get_custom_div_props(){
 
 
 function main(){
-    let grid = new Grid(document.body,150,2)
+    let grid = new Grid(document.body,150)
     for(let i=0;i<20;i++){
         let div = grid.get_div(get_custom_div_props());
         console.log(`created comp : ${div.id}`);
