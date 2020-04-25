@@ -1,4 +1,5 @@
 import {Grid} from "./index.js"
+import {html} from "./web-js-utils-2.0.2.js"
 
 function get_custom_div_props(){
     return {
@@ -19,6 +20,23 @@ function main(){
     }
 
     grid.apply()
+
+
+    html(document.body,/*html*/`<a>
+    <p align="center">
+        <p align="center">"shift+mouse wheel" : scale grid</p>
+    </p>
+    </a>`)
+
+    html(document.body,/*html*/`<a>
+        <p align="center">
+            <a href="https://github.com/WebSVG/grid" target="_blank">
+            <img src=./media/github.png width=40 href="https://github.com/WebSVG/grid">
+            <p align="center">Readme & Source Code</p>
+        </p>
+    </a>`)
+
+
 }
 
 main();
