@@ -3,7 +3,7 @@ Smart CSS grid for arraging HTML elements of different sizes with a known min an
 
 # install
 
-    >npm i web-js-utils
+    >npm i scale-grid
 
 # Live Demo
 
