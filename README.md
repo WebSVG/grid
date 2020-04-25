@@ -32,3 +32,12 @@ https://websvg.github.io/grid/
   * minimize file storage duplication, and keep a simple repo directory structure
   * automate the build process
   * use a budler if needed but minimize balck magic lock in and rely rather on tested standards
+
+# Versions
+## 1.1.0
+* enabled unlimited grid slots usage by one entry not only 1 or 2
+* added element `resize()`
+
+# Features plan
+* conditional colors not default
+* optional wheel disable

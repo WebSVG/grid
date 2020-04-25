@@ -80,10 +80,8 @@ class Grid{
         const width = props.width;
         const height = props.height;
         const id = `div_${suid()}`;
-        //TODO scale up and down to max width / height that keeps within a reasonable number of columns/rows
-        //TODO derive the number of columns/rows out of the width and height
-        const width_span = (width>side_size)?2:1;
-        const height_span = (height>side_size)?2:1;
+        const width_span = Math.ceil(width/side_size);
+        const height_span = Math.ceil(height/side_size);
         css(this.sheet,/*css*/`
         #${id} {
             width:${width};
@@ -100,6 +98,19 @@ class Grid{
         `);
         c_comp.addEventListener('wheel',onWheel);
         return c_comp;
+    }
+
+    resize(element,width,height){
+        element.setAttribute("data-width",width)
+        element.setAttribute("data-height",height)
+        element.style.width = width;
+        element.style.height = height;
+
+        const side_size = this.main_div.getAttribute("data-side-min");
+        const width_span = Math.ceil(width/side_size);
+        const height_span = Math.ceil(height/side_size);
+        element.style.gridColumn = `span ${width_span}`;
+        element.style.gridRow = `span ${height_span}`;
     }
 
     apply(){
