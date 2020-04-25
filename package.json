@@ -1,6 +1,6 @@
 {
   "name": "scale-grid",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Smart CSS grid for arraging HTML elements of different sizes with a known min and max width.",
   "main": "./src/index.js",
   "scripts": {
