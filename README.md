@@ -1,6 +1,10 @@
 # grid
 Smart CSS grid for arraging HTML elements of different sizes with a known min and max width. Scaling elements on mouse wheel also scales the grid to Keep the expected responsiveness.
 
+# install
+
+    >npm i web-js-utils
+
 # Live Demo
 
 <img src="./media/view.png" href="https://websvg.github.io/grid/" target="_blank">
@@ -19,7 +23,7 @@ https://websvg.github.io/grid/
 * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 
 
-# Note on development
+# Note on integration
 * the build script is not cross os given the poor default cross platform capabilities available
 * it is not necessary to recreate the wheel, in stead of re-writing a new cross platform copy script, the option of using an existing minimal bundler is being analyzed
 * here some development priorization rules :
