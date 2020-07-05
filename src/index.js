@@ -1,5 +1,8 @@
 
-import {html,css,suid} from "./web-js-utils-2.0.2.js"
+import {html,css,suid} from "../lib/web-js-utils.js"
+
+//restricting to a singleton (one instance), for easier parents retriaval
+let that = null
 
 function scale_grid(parent,sheet,props){
     const id = `div_${suid()}`;
@@ -31,7 +34,8 @@ function onWheel(e){
     if(!e.shiftKey){
         return;
     }
-    const main_element = e.target.classList.contains("main")?e.target:e.target.parentElement;
+    console.log(`wheel on ${e.target.tagName} : ${e.target.id}`)
+    let main_element = that.main_div
     let scale = main_element.getAttribute("data-scale");
     const min_scale = 0.5;
     const max_scale = 2;
@@ -71,6 +75,7 @@ class Grid{
         this.sheet = new CSSStyleSheet()
         this.main_div = scale_grid(parent,this.sheet,{grid_side:grid_side,max_sides:max_sides});
         console.log(JSON.stringify(this.main_div))
+        that = this
     }
 
     get_div(props){
